@@ -1,5 +1,7 @@
 package tw.yung.rs.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,14 +30,14 @@ public class Rsza100ServiceImpl implements Rsza100Service {
 	public Rsza100Resp findPersonal() {
 		Rsza100Resp resp = new Rsza100Resp();
 
-		Personal result = personalDao.select();
+		List<Personal> result = personalDao.select();
 
 		if (result == null) {
 			resp.setMessage(Message.E002, "資料查詢");
 		} else {
+			resp.setPersonal(result.get(0));
 			resp.setMessage(Message.C001, "資料查詢");
 		}
-		resp.setPersonal(result);
 
 		return resp;
 	}

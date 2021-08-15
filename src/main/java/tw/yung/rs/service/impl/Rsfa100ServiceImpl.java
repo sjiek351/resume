@@ -1,5 +1,7 @@
 package tw.yung.rs.service.impl;
 
+import java.util.List;
+
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,14 +43,14 @@ public class Rsfa100ServiceImpl implements Rsfa100Service {
 		Personal personal = new Personal();
 		personal.setIdn(idn);
 
-		Personal result = personalDao.selectByPK(personal);
+		List<Personal> resultList = personalDao.select(personal);
 
-		if (result == null) {
+		if (resultList == null) {
 			resp.setMessage(Message.E002, "資料查詢");
 		} else {
+			resp.setPersonal(resultList.get(0));
 			resp.setMessage(Message.C001, "資料查詢");
 		}
-		resp.setPersonal(result);
 
 		return resp;
 	}
@@ -75,6 +77,9 @@ public class Rsfa100ServiceImpl implements Rsfa100Service {
 
 		Personal personal = new Personal();
 		personal.setIdn(idn);
+		
+		boolean isPersonalExist = (personalDao.select(personal) != null);
+		
 		personal.setName(name);
 		personal.setNameEnglish(nameEnglish);
 		personal.setJob(job);
@@ -84,10 +89,10 @@ public class Rsfa100ServiceImpl implements Rsfa100Service {
 		personal.setIntroduction(introduction);
 
 		int result = 0;
-		if (personalDao.selectByPK(personal) == null) {
-			personalDao.insert(personal);
+		if (isPersonalExist) {
+			result = personalDao.update(personal);
 		} else {
-			personalDao.update(personal);
+			result = personalDao.insert(personal);
 		}
 		
 		if (result == 0) {

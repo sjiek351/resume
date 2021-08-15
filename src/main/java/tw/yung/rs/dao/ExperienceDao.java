@@ -38,38 +38,28 @@ public class ExperienceDao extends GenericDao {
 	 * @since 2021-08-14 崔永昀
 	 */
 	public List<Experience> select() {
-
-		StringBuffer sql = new StringBuffer();
-		sql.append(SELECT);
-		sql.append(" * ");
-		sql.append(FROM).append(EXPERIENCE);
-
-		List<Experience> resultList = jdbcTemplate.query(sql.toString(), new BeanPropertyRowMapper<>(Experience.class));
-
-		if (resultList.size() == 0) {
-			return null;
-		}
-
-		return resultList;
+		return select(null);
 	}
-	
+
 	/**
 	 * <pre>
-	 * [查詢] PKey
+	 * [查詢]
 	 * 若無資料回傳null
 	 * </pre>
 	 *
 	 * @since 2021-08-13 崔永昀
 	 */
-	public Experience select(Experience experience) {
+	public List<Experience> select(Experience experience) {
 
 		Map<String, Object> whereMap = new HashMap<>();
-		whereMap.put(" EXP_ID=? ", experience.getExpId());
-		whereMap.put(" EXP_NAME=? ", experience.getExpName());
-		whereMap.put(" STARTTIME=? ", experience.getStarttime());
-		whereMap.put(" ENDTIME=? ", experience.getEndtime());
-		whereMap.put(" JOB_TITLE=? ", experience.getJobTitle());
-		whereMap.put(" JOB_DESCRIBE=? ", experience.getJobDescribe());
+		if (experience != null) {
+			whereMap.put(" EXP_ID=? ", experience.getExpId());
+			whereMap.put(" EXP_NAME=? ", experience.getExpName());
+			whereMap.put(" STARTTIME=? ", experience.getStarttime());
+			whereMap.put(" ENDTIME=? ", experience.getEndtime());
+			whereMap.put(" JOB_TITLE=? ", experience.getJobTitle());
+			whereMap.put(" JOB_DESCRIBE=? ", experience.getJobDescribe());
+		}
 		Map<String, Object> sqlMap = whereMap2Map(whereMap);
 		String whereSql = (String) sqlMap.get(WHERE_SQL);
 		Object[] whereValues = (Object[]) sqlMap.get(WHERE_VALUES);
@@ -79,6 +69,7 @@ public class ExperienceDao extends GenericDao {
 		sql.append(" * ");
 		sql.append(FROM).append(EXPERIENCE);
 		sql.append(whereSql);
+		sql.append(ORDER_BY).append(" STARTTIME desc ");
 
 		List<Experience> resultList = jdbcTemplate.query(sql.toString(), new BeanPropertyRowMapper<>(Experience.class),
 				whereValues);
@@ -87,7 +78,7 @@ public class ExperienceDao extends GenericDao {
 			return null;
 		}
 
-		return resultList.get(0);
+		return resultList;
 	}
 
 	/**
@@ -156,7 +147,7 @@ public class ExperienceDao extends GenericDao {
 
 		return resultList;
 	}
-	
+
 	/**
 	 * <pre>
 	 * [刪除] PKey
@@ -184,5 +175,5 @@ public class ExperienceDao extends GenericDao {
 
 		return resultList;
 	}
-	
+
 }

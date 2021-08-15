@@ -59,6 +59,9 @@ public class Rsfc100ServiceImpl implements Rsfc100Service {
 
 		Experience experience = new Experience();
 		experience.setExpId(expId);
+		
+		boolean isExperienceExist = (experienceDao.select(experience) != null);
+		
 		experience.setExpName(expName);
 		experience.setStarttime(starttime);
 		experience.setEndtime(endtime);
@@ -66,10 +69,10 @@ public class Rsfc100ServiceImpl implements Rsfc100Service {
 		experience.setJobDescribe(jobDescribe);
 
 		int result = 0;
-		if (experienceDao.selectByPK(experience) == null) {
-			result = experienceDao.insert(experience);
-		} else {
+		if (isExperienceExist) {
 			result = experienceDao.update(experience);
+		} else {
+			result = experienceDao.insert(experience);
 		}
 
 		if (result == 0) {
@@ -130,6 +133,9 @@ public class Rsfc100ServiceImpl implements Rsfc100Service {
 		// 變更Project
 		Project project = new Project();
 		project.setProjectId(projectId);
+		
+		boolean isProjectExist = (projectDao.select(project) != null);
+		
 		project.setProjectName(projectName);
 		project.setExpId(expId);
 		project.setStarttime(starttime);
@@ -138,10 +144,10 @@ public class Rsfc100ServiceImpl implements Rsfc100Service {
 		project.setJobDescribe(jobDescribe);
 
 		int projectResult = 0;
-		if (projectDao.select(project) == null) {
-			projectResult = projectDao.insert(project);
-		} else {
+		if (isProjectExist) {
 			projectResult = projectDao.update(project);
+		} else {
+			projectResult = projectDao.insert(project);
 		}
 
 		// 變更Technology

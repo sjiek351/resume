@@ -28,7 +28,19 @@ public class TechnologyDao extends GenericDao {
 
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
-	
+
+	/**
+	 * <pre>
+	 * [查詢]
+	 * 若無資料回傳null
+	 * </pre>
+	 *
+	 * @since 2021-08-14 崔永昀
+	 */
+	public List<Technology> select() {
+		return select(null);
+	}
+
 	/**
 	 * <pre>
 	 * [查詢]
@@ -40,8 +52,10 @@ public class TechnologyDao extends GenericDao {
 	public List<Technology> select(Technology technology) {
 
 		Map<String, Object> whereMap = new HashMap<>();
-		whereMap.put(" PROJECT_ID=? ", technology.getProjectId());
-		whereMap.put(" SKILL_NAME=? ", technology.getSkillName());
+		if (technology != null) {
+			whereMap.put(" PROJECT_ID=? ", technology.getProjectId());
+			whereMap.put(" SKILL_NAME=? ", technology.getSkillName());
+		}
 		Map<String, Object> sqlMap = whereMap2Map(whereMap);
 		String whereSql = (String) sqlMap.get(WHERE_SQL);
 		Object[] whereValues = (Object[]) sqlMap.get(WHERE_VALUES);
@@ -61,7 +75,7 @@ public class TechnologyDao extends GenericDao {
 
 		return resultList;
 	}
-	
+
 	/**
 	 * <pre>
 	 * [查詢] ProjectId
@@ -70,29 +84,29 @@ public class TechnologyDao extends GenericDao {
 	 *
 	 * @since 2021-08-13 崔永昀
 	 */
-	public List<Technology> selectByProjectId(Technology technology) {
-
-		Map<String, Object> whereMap = new HashMap<>();
-		whereMap.put(" PROJECT_ID=? ", technology.getProjectId());
-		Map<String, Object> sqlMap = whereMap2Map(whereMap);
-		String whereSql = (String) sqlMap.get(WHERE_SQL);
-		Object[] whereValues = (Object[]) sqlMap.get(WHERE_VALUES);
-
-		StringBuffer sql = new StringBuffer();
-		sql.append(SELECT);
-		sql.append(" * ");
-		sql.append(FROM).append(TECHNOLOGY);
-		sql.append(whereSql);
-
-		List<Technology> resultList = jdbcTemplate.query(sql.toString(), new BeanPropertyRowMapper<>(Technology.class),
-				whereValues);
-
-		if (resultList.size() == 0) {
-			return null;
-		}
-
-		return resultList;
-	}
+//	public List<Technology> selectByProjectId(Technology technology) {
+//
+//		Map<String, Object> whereMap = new HashMap<>();
+//		whereMap.put(" PROJECT_ID=? ", technology.getProjectId());
+//		Map<String, Object> sqlMap = whereMap2Map(whereMap);
+//		String whereSql = (String) sqlMap.get(WHERE_SQL);
+//		Object[] whereValues = (Object[]) sqlMap.get(WHERE_VALUES);
+//
+//		StringBuffer sql = new StringBuffer();
+//		sql.append(SELECT);
+//		sql.append(" * ");
+//		sql.append(FROM).append(TECHNOLOGY);
+//		sql.append(whereSql);
+//
+//		List<Technology> resultList = jdbcTemplate.query(sql.toString(), new BeanPropertyRowMapper<>(Technology.class),
+//				whereValues);
+//
+//		if (resultList.size() == 0) {
+//			return null;
+//		}
+//
+//		return resultList;
+//	}
 
 	/**
 	 * <pre>

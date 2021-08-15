@@ -37,44 +37,39 @@ public class PersonalDao extends GenericDao {
 	 *
 	 * @since 2021-08-09 崔永昀
 	 */
-	public Personal select() {
-
-		StringBuffer sql = new StringBuffer();
-		sql.append(SELECT);
-		sql.append(" NAME, NAME_ENGLISH, JOB, LOCATION, CELLPHONE, EMAIL, INTRODUCTION ");
-		sql.append(FROM).append(PERSONAL);
-
-		List<Personal> resultList = jdbcTemplate.query(sql.toString(), new BeanPropertyRowMapper<>(Personal.class));
-
-		if (resultList.size() == 0) {
-			return null;
-		}
-
-		return resultList.get(0);
-
+	public List<Personal> select() {
+		return select(null);
 	}
 
 	/**
 	 * <pre>
-	 * [查詢] PKey
+	 * [查詢]
 	 * 若無資料回傳null
 	 * </pre>
 	 *
 	 * @since 2021-08-09 崔永昀
 	 */
-	public Personal selectByPK(Personal personal) {
-		if (personal == null) {
-			return null;
-		}
+	public List<Personal> select(Personal personal) {
 
 		Map<String, Object> whereMap = new HashMap<>();
-		whereMap.put(" IDN=? ", personal.getIdn());
+		if (personal != null) {
+			whereMap.put(" IDN=? ", personal.getIdn());
+			whereMap.put(" NAME=? ", personal.getName());
+			whereMap.put(" NAME_ENGLISH=? ", personal.getNameEnglish());
+			whereMap.put(" JOB=? ", personal.getJob());
+			whereMap.put(" LOCATION=? ", personal.getLocation());
+			whereMap.put(" CELLPHONE=? ", personal.getCellphone());
+			whereMap.put(" EMAIL=? ", personal.getEmail());
+			whereMap.put(" INTRODUCTION=? ", personal.getIntroduction());
+		}
 		Map<String, Object> sqlMap = whereMap2Map(whereMap);
 		String whereSql = (String) sqlMap.get(WHERE_SQL);
 		Object[] whereValues = (Object[]) sqlMap.get(WHERE_VALUES);
 
 		StringBuffer sql = new StringBuffer();
-		sql.append(SELECT).append(" * ").append(FROM).append(PERSONAL);
+		sql.append(SELECT);
+		sql.append(" NAME, NAME_ENGLISH, JOB, LOCATION, CELLPHONE, EMAIL, INTRODUCTION ");
+		sql.append(FROM).append(PERSONAL);
 		sql.append(whereSql);
 
 		List<Personal> resultList = jdbcTemplate.query(sql.toString(), new BeanPropertyRowMapper<>(Personal.class),
@@ -84,7 +79,7 @@ public class PersonalDao extends GenericDao {
 			return null;
 		}
 
-		return resultList.get(0);
+		return resultList;
 
 	}
 

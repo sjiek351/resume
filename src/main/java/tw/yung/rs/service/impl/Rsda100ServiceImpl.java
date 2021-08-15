@@ -1,5 +1,7 @@
 package tw.yung.rs.service.impl;
 
+import java.util.List;
+
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,14 +42,14 @@ public class Rsda100ServiceImpl implements Rsda100Service {
 
 		Personal personal = new Personal();
 		personal.setIdn(idn);
-		Personal result = personalDao.selectByPK(personal);
+		List<Personal> resultList = personalDao.select(personal);
 		
-		if (result == null) {
+		if (resultList == null) {
 			resp.setMessage(Message.E002, "資料查詢");
 		} else {
+			resp.setPersonal(resultList.get(0));
 			resp.setMessage(Message.C001, "資料查詢");
 		}
-		resp.setPersonal(result);
 
 		return resp;
 	}

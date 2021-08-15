@@ -37,27 +37,42 @@ public class ProjectDao extends GenericDao {
 	 *
 	 * @since 2021-08-14 崔永昀
 	 */
+	public List<Project> select() {
+		return select(null);
+	}
+
+	/**
+	 * <pre>
+	 * [查詢]
+	 * 若無資料回傳null
+	 * </pre>
+	 *
+	 * @since 2021-08-14 崔永昀
+	 */
 	public List<Project> select(Project project) {
 
 		Map<String, Object> whereMap = new HashMap<>();
-		whereMap.put(" PROJECT_ID=? ", project.getProjectId());
-		whereMap.put(" PROJECT_NAME=? ", project.getProjectName());
-		whereMap.put(" EXP_ID=? ", project.getExpId());
-		whereMap.put(" STARTTIME=? ", project.getStarttime());
-		whereMap.put(" ENDTIME=? ", project.getEndtime());
-		whereMap.put(" JOB_TITLE=? ", project.getJobTitle());
-		whereMap.put(" JOB_DESCRIBE=? ", project.getJobDescribe());
+		if (project != null) {
+			whereMap.put(" PROJECT_ID=? ", project.getProjectId());
+			whereMap.put(" PROJECT_NAME=? ", project.getProjectName());
+			whereMap.put(" EXP_ID=? ", project.getExpId());
+			whereMap.put(" STARTTIME=? ", project.getStarttime());
+			whereMap.put(" ENDTIME=? ", project.getEndtime());
+			whereMap.put(" JOB_TITLE=? ", project.getJobTitle());
+			whereMap.put(" JOB_DESCRIBE=? ", project.getJobDescribe());
+		}
 		Map<String, Object> sqlMap = whereMap2Map(whereMap);
 		String whereSql = (String) sqlMap.get(WHERE_SQL);
 		Object[] whereValues = (Object[]) sqlMap.get(WHERE_VALUES);
-		
+
 		StringBuffer sql = new StringBuffer();
 		sql.append(SELECT);
 		sql.append(" * ");
 		sql.append(FROM).append(PROJECT);
 		sql.append(whereSql);
 
-		List<Project> resultList = jdbcTemplate.query(sql.toString(), new BeanPropertyRowMapper<>(Project.class), whereValues);
+		List<Project> resultList = jdbcTemplate.query(sql.toString(), new BeanPropertyRowMapper<>(Project.class),
+				whereValues);
 
 		if (resultList.size() == 0) {
 			return null;
@@ -65,38 +80,6 @@ public class ProjectDao extends GenericDao {
 
 		return resultList;
 	}
-	
-	/**
-	 * <pre>
-	 * [查詢] PKey
-	 * 若無資料回傳null
-	 * </pre>
-	 *
-	 * @since 2021-08-13 崔永昀
-	 */
-//	public Project selectByPK(String projectId) {
-//
-//		Map<String, Object> whereMap = new HashMap<>();
-//		whereMap.put(" PROJECT_ID=? ", projectId);
-//		Map<String, Object> sqlMap = whereMap2Map(whereMap);
-//		String whereSql = (String) sqlMap.get(WHERE_SQL);
-//		Object[] whereValues = (Object[]) sqlMap.get(WHERE_VALUES);
-//
-//		StringBuffer sql = new StringBuffer();
-//		sql.append(SELECT);
-//		sql.append(" * ");
-//		sql.append(FROM).append(PROJECT);
-//		sql.append(whereSql);
-//
-//		List<Project> resultList = jdbcTemplate.query(sql.toString(), new BeanPropertyRowMapper<>(Project.class),
-//				whereValues);
-//
-//		if (resultList.size() == 0) {
-//			return null;
-//		}
-//
-//		return resultList.get(0);
-//	}
 
 	/**
 	 * <pre>

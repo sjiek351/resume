@@ -38,20 +38,7 @@ public class SkillDao extends GenericDao {
 	 * @since 2021-08-09 崔永昀
 	 */
 	public List<Skill> select() {
-
-		StringBuffer sql = new StringBuffer();
-		sql.append(SELECT);
-		sql.append(" * ");
-		sql.append(FROM).append(SKILL);
-		sql.append(ORDER_BY).append(" TYPE, RANK desc, SKILL_NAME ");
-
-		List<Skill> resultList = jdbcTemplate.query(sql.toString(), new BeanPropertyRowMapper<>(Skill.class));
-
-		if (resultList.size() == 0) {
-			return null;
-		}
-
-		return resultList;
+		return select(null);
 	}
 
 	/**
@@ -62,10 +49,14 @@ public class SkillDao extends GenericDao {
 	 *
 	 * @since 2021-08-09 崔永昀
 	 */
-	public Skill selectByPK(Skill skill) {
+	public List<Skill> select(Skill skill) {
 
 		Map<String, Object> whereMap = new HashMap<>();
-		whereMap.put(" SKILL_NAME=? ", skill.getSkillName());
+		if (skill != null) {
+			whereMap.put(" SKILL_NAME=? ", skill.getSkillName());
+			whereMap.put(" TYPE=? ", skill.getType());
+			whereMap.put(" RANK=? ", skill.getRank());
+		}
 		Map<String, Object> sqlMap = whereMap2Map(whereMap);
 		String whereSql = (String) sqlMap.get(WHERE_SQL);
 		Object[] whereValues = (Object[]) sqlMap.get(WHERE_VALUES);
@@ -75,6 +66,7 @@ public class SkillDao extends GenericDao {
 		sql.append(" * ");
 		sql.append(FROM).append(SKILL);
 		sql.append(whereSql);
+		sql.append(ORDER_BY).append(" TYPE, RANK desc, SKILL_NAME ");
 
 		List<Skill> resultList = jdbcTemplate.query(sql.toString(), new BeanPropertyRowMapper<>(Skill.class),
 				whereValues);
@@ -83,7 +75,7 @@ public class SkillDao extends GenericDao {
 			return null;
 		}
 
-		return resultList.get(0);
+		return resultList;
 	}
 
 	/**

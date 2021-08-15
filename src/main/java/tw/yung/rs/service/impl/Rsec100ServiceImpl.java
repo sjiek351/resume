@@ -102,6 +102,7 @@ public class Rsec100ServiceImpl implements Rsec100Service {
 		});
 
 		resp.setExps(exps);
+		resp.setMessage(Message.C001, "資料查詢");
 
 		return resp;
 	}
