@@ -1,0 +1,149 @@
+{
+    "skills": [
+        {
+            "skillName": "HTML",
+            "type": 1,
+            "rank": 3
+        },
+        {
+            "skillName": "Javascript",
+            "type": 1,
+            "rank": 3
+        },
+        {
+            "skillName": "Java",
+            "type": 1,
+            "rank": 3
+        },
+        {
+            "skillName": "PL/SQL",
+            "type": 1,
+            "rank": 2
+        },
+        {
+            "skillName": "CSS",
+            "type": 1,
+            "rank": 2
+        },
+        {
+            "skillName": "Typescript",
+            "type": 1,
+            "rank": 1
+        },
+        {
+            "skillName": "Scss",
+            "type": 1,
+            "rank": 1
+        },
+        {
+            "skillName": "SpringMVC",
+            "type": 2,
+            "rank": 3
+        },
+        {
+            "skillName": "Thymeleaf",
+            "type": 2,
+            "rank": 2
+        },
+        {
+            "skillName": "Bootstrap",
+            "type": 2,
+            "rank": 2
+        },
+        {
+            "skillName": "Vue",
+            "type": 2,
+            "rank": 2
+        },
+        {
+            "skillName": "Quartz",
+            "type": 2,
+            "rank": 2
+        },
+        {
+            "skillName": "JUnit",
+            "type": 2,
+            "rank": 2
+        },
+        {
+            "skillName": "SpringBoot",
+            "type": 2,
+            "rank": 1
+        },
+        {
+            "skillName": "Angular",
+            "type": 2,
+            "rank": 1
+        },
+        {
+            "skillName": "Hibernate",
+            "type": 2,
+            "rank": 1
+        },
+        {
+            "skillName": "Jquery",
+            "type": 3,
+            "rank": 2
+        },
+        {
+            "skillName": "iText",
+            "type": 3,
+            "rank": 2
+        },
+        {
+            "skillName": "Apache POI",
+            "type": 3,
+            "rank": 2
+        },
+        {
+            "skillName": "Apache FTPClient",
+            "type": 3,
+            "rank": 2
+        },
+        {
+            "skillName": "Axios",
+            "type": 3,
+            "rank": 2
+        },
+        {
+            "skillName": "Eclipse",
+            "type": 4,
+            "rank": 3
+        },
+        {
+            "skillName": "Visual Studio Code",
+            "type": 4,
+            "rank": 3
+        },
+        {
+            "skillName": "Sourcetree",
+            "type": 4,
+            "rank": 3
+        },
+        {
+            "skillName": "SQL Developer",
+            "type": 4,
+            "rank": 2
+        },
+        {
+            "skillName": "FileZilla",
+            "type": 4,
+            "rank": 2
+        },
+        {
+            "skillName": "Dreamweaver",
+            "type": 4,
+            "rank": 1
+        },
+        {
+            "skillName": "NetBeans",
+            "type": 4,
+            "rank": 1
+        },
+        {
+            "skillName": "GitHub Desktop",
+            "type": 4,
+            "rank": 1
+        }
+    ]
+}
