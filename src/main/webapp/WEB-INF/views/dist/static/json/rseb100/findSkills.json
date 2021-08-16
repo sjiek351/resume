@@ -1,12 +1,11 @@
 {
+    "message": {
+        "msgInfo": "資料查詢成功!",
+        "msgCode": "C001"
+    },
     "skills": [
         {
             "skillName": "HTML",
-            "type": 1,
-            "rank": 3
-        },
-        {
-            "skillName": "Javascript",
             "type": 1,
             "rank": 3
         },
@@ -16,9 +15,9 @@
             "rank": 3
         },
         {
-            "skillName": "PL/SQL",
+            "skillName": "Javascript",
             "type": 1,
-            "rank": 2
+            "rank": 3
         },
         {
             "skillName": "CSS",
@@ -26,12 +25,17 @@
             "rank": 2
         },
         {
-            "skillName": "Typescript",
+            "skillName": "PL/SQL",
+            "type": 1,
+            "rank": 2
+        },
+        {
+            "skillName": "SCSS",
             "type": 1,
             "rank": 1
         },
         {
-            "skillName": "Scss",
+            "skillName": "Typescript",
             "type": 1,
             "rank": 1
         },
@@ -41,22 +45,7 @@
             "rank": 3
         },
         {
-            "skillName": "Thymeleaf",
-            "type": 2,
-            "rank": 2
-        },
-        {
             "skillName": "Bootstrap",
-            "type": 2,
-            "rank": 2
-        },
-        {
-            "skillName": "Vue",
-            "type": 2,
-            "rank": 2
-        },
-        {
-            "skillName": "Quartz",
             "type": 2,
             "rank": 2
         },
@@ -66,9 +55,19 @@
             "rank": 2
         },
         {
-            "skillName": "SpringBoot",
+            "skillName": "Quartz",
             "type": 2,
-            "rank": 1
+            "rank": 2
+        },
+        {
+            "skillName": "Thymeleaf",
+            "type": 2,
+            "rank": 2
+        },
+        {
+            "skillName": "Vue",
+            "type": 2,
+            "rank": 2
         },
         {
             "skillName": "Angular",
@@ -81,6 +80,26 @@
             "rank": 1
         },
         {
+            "skillName": "SpringBoot",
+            "type": 2,
+            "rank": 1
+        },
+        {
+            "skillName": "Apache FTPClient",
+            "type": 3,
+            "rank": 2
+        },
+        {
+            "skillName": "Apache POI",
+            "type": 3,
+            "rank": 2
+        },
+        {
+            "skillName": "Axios",
+            "type": 3,
+            "rank": 2
+        },
+        {
             "skillName": "Jquery",
             "type": 3,
             "rank": 2
@@ -91,27 +110,7 @@
             "rank": 2
         },
         {
-            "skillName": "Apache POI",
-            "type": 3,
-            "rank": 2
-        },
-        {
-            "skillName": "Apache FTPClient",
-            "type": 3,
-            "rank": 2
-        },
-        {
-            "skillName": "Axios",
-            "type": 3,
-            "rank": 2
-        },
-        {
             "skillName": "Eclipse",
-            "type": 4,
-            "rank": 3
-        },
-        {
-            "skillName": "Visual Studio Code",
             "type": 4,
             "rank": 3
         },
@@ -121,12 +120,17 @@
             "rank": 3
         },
         {
-            "skillName": "SQL Developer",
+            "skillName": "Visual Studio Code",
+            "type": 4,
+            "rank": 3
+        },
+        {
+            "skillName": "FileZilla",
             "type": 4,
             "rank": 2
         },
         {
-            "skillName": "FileZilla",
+            "skillName": "SQL Developer",
             "type": 4,
             "rank": 2
         },
@@ -136,12 +140,12 @@
             "rank": 1
         },
         {
-            "skillName": "NetBeans",
+            "skillName": "GitHub Desktop",
             "type": 4,
             "rank": 1
         },
         {
-            "skillName": "GitHub Desktop",
+            "skillName": "NetBeans",
             "type": 4,
             "rank": 1
         }

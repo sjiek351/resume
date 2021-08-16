@@ -1,20 +1,18 @@
 {
+    "message": {
+        "msgInfo": "資料查詢成功!",
+        "msgCode": "C001"
+    },
     "exps": [
         {
-            "expId": "20200706",
-            "starttime": "2020-07-06T00:00:00.000+08:00",
-            "endtime": "2021-07-06T00:00:00.000+08:00",
             "expName": "緯德科技股份有限公司",
-            "jobTitle": "軟體工程師",
-            "jobDescribe": "派駐至客戶端，完成客戶的程式需求。",
             "projects": [
                 {
-                    "expId": "20200706",
-                    "projectId": "20210118",
-                    "starttime": "2021-01-18T00:00:00.000+08:00",
-                    "endtime": "2021-07-01T00:00:00.000+08:00",
-                    "projectName": "勞保局內部系統【勞工退休金提繳系統】",
                     "jobTitle": "全端工程師",
+                    "endtime": 1625097600000,
+                    "starttime": 1610928000000,
+                    "projectName": "勞保局內部系統【勞工退休金提繳系統】",
+                    "projectId": "20210118",
                     "jobDescribe": "對勞退提繳系統做重構及整合。\n\n1.Quartz排程，定時處理業務資料並搭配Java Mail寄送郵件至承辦人員。\n2.iText產出PDF、Excel。\n3.使用FTPClient做取檔及碰檔。\n4.基本CRUD，對DB資料做操作及呈現。\n5.對Api做JUnit單元測試。",
                     "skillNames": [
                         "SpringMVC",
@@ -29,12 +27,11 @@
                     ]
                 },
                 {
-                    "expId": "20200706",
-                    "projectId": "20201026",
-                    "starttime": "2020-10-26T00:00:00.000+08:00",
-                    "endtime": "2021-01-01T00:00:00.000+08:00",
-                    "projectName": "國泰人壽內部系統【數據字典】",
                     "jobTitle": "全端工程師",
+                    "endtime": 1609459200000,
+                    "starttime": 1603670400000,
+                    "projectName": "國泰人壽內部系統【數據字典】",
+                    "projectId": "20201026",
                     "jobDescribe": "對國壽內部保險資訊的查詢系統做重構，及測試階段需求單的處理。\n\n1.基本CRUD，對DB資料做操作及呈現。\n2.對每個DB請求做JUnit單元測試。",
                     "skillNames": [
                         "Vue",
@@ -45,20 +42,25 @@
                         "Axios"
                     ]
                 }
-            ]
+            ],
+            "jobTitle": "軟體工程師",
+            "endtime": 1625097600000,
+            "starttime": 1593993600000,
+            "jobDescribe": "派駐至客戶端，完成客戶的程式需求。"
         },
         {
-            "expId": "20200701",
-            "starttime": "2019-07-01T00:00:00.000+08:00",
-            "endtime": "2020-07-06T00:00:00.000+08:00",
-            "expName": "服兵役、巨匠補習班(Java, SQL)"
+            "expName": "服兵役、巨匠補習班(Java, SQL)",
+            "jobTitle": null,
+            "endtime": 1593993600000,
+            "starttime": 1561939200000,
+            "jobDescribe": null
         },
         {
-            "expId": "20190630",
-            "starttime": "2019-06-30T00:00:00.000+08:00",
-            "endtime": "2019-06-30T00:00:00.000+08:00",
             "expName": "國立東華大學應用數學系-學士",
-            "jobTitle": "畢業"
+            "jobTitle": "畢業",
+            "endtime": 1561852800000,
+            "starttime": 1561852800000,
+            "jobDescribe": null
         }
     ]
 }
