@@ -83,6 +83,41 @@ public class ExperienceDao extends GenericDao {
 
 	/**
 	 * <pre>
+	 * [查詢] PKey
+	 * 若無資料回傳null
+	 * </pre>
+	 *
+	 * @since 2021-08-17 崔永昀
+	 */
+	public Experience selectByPK(String expId) {
+		if (expId == null) {
+			return null;
+		}
+
+		Map<String, Object> whereMap = new HashMap<>();
+		whereMap.put(" EXP_ID=? ", expId);
+		Map<String, Object> sqlMap = whereMap2Map(whereMap);
+		String whereSql = (String) sqlMap.get(WHERE_SQL);
+		Object[] whereValues = (Object[]) sqlMap.get(WHERE_VALUES);
+
+		StringBuffer sql = new StringBuffer();
+		sql.append(SELECT);
+		sql.append(" * ");
+		sql.append(FROM).append(EXPERIENCE);
+		sql.append(whereSql);
+
+		List<Experience> resultList = jdbcTemplate.query(sql.toString(), new BeanPropertyRowMapper<>(Experience.class),
+				whereValues);
+
+		if (resultList.size() == 0) {
+			return null;
+		}
+
+		return resultList.get(0);
+	}
+
+	/**
+	 * <pre>
 	 * [新增]
 	 * 回傳影響資料的數量
 	 * </pre>

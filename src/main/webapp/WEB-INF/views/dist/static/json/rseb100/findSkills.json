@@ -60,6 +60,11 @@
             "rank": 2
         },
         {
+            "skillName": "SpringJDBC",
+            "type": 2,
+            "rank": 2
+        },
+        {
             "skillName": "Thymeleaf",
             "type": 2,
             "rank": 2
@@ -76,6 +81,11 @@
         },
         {
             "skillName": "Hibernate",
+            "type": 2,
+            "rank": 1
+        },
+        {
+            "skillName": "SpringAspects",
             "type": 2,
             "rank": 1
         },

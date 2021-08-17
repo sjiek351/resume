@@ -78,38 +78,6 @@ public class TechnologyDao extends GenericDao {
 
 	/**
 	 * <pre>
-	 * [查詢] ProjectId
-	 * 若無資料回傳null
-	 * </pre>
-	 *
-	 * @since 2021-08-13 崔永昀
-	 */
-//	public List<Technology> selectByProjectId(Technology technology) {
-//
-//		Map<String, Object> whereMap = new HashMap<>();
-//		whereMap.put(" PROJECT_ID=? ", technology.getProjectId());
-//		Map<String, Object> sqlMap = whereMap2Map(whereMap);
-//		String whereSql = (String) sqlMap.get(WHERE_SQL);
-//		Object[] whereValues = (Object[]) sqlMap.get(WHERE_VALUES);
-//
-//		StringBuffer sql = new StringBuffer();
-//		sql.append(SELECT);
-//		sql.append(" * ");
-//		sql.append(FROM).append(TECHNOLOGY);
-//		sql.append(whereSql);
-//
-//		List<Technology> resultList = jdbcTemplate.query(sql.toString(), new BeanPropertyRowMapper<>(Technology.class),
-//				whereValues);
-//
-//		if (resultList.size() == 0) {
-//			return null;
-//		}
-//
-//		return resultList;
-//	}
-
-	/**
-	 * <pre>
 	 * [批次新增]
 	 * 回傳影響資料的數量Array
 	 * </pre>

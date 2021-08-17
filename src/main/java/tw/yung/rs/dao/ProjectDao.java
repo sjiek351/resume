@@ -83,6 +83,41 @@ public class ProjectDao extends GenericDao {
 
 	/**
 	 * <pre>
+	 * [查詢] PKey
+	 * 若無資料回傳null
+	 * </pre>
+	 *
+	 * @since 2021-08-17 崔永昀
+	 */
+	public Project selectByPK(String projectId) {
+		if (projectId == null) {
+			return null;
+		}
+
+		Map<String, Object> whereMap = new HashMap<>();
+		whereMap.put(" PROJECT_ID=? ", projectId);
+		Map<String, Object> sqlMap = whereMap2Map(whereMap);
+		String whereSql = (String) sqlMap.get(WHERE_SQL);
+		Object[] whereValues = (Object[]) sqlMap.get(WHERE_VALUES);
+
+		StringBuffer sql = new StringBuffer();
+		sql.append(SELECT);
+		sql.append(" * ");
+		sql.append(FROM).append(PROJECT);
+		sql.append(whereSql);
+
+		List<Project> resultList = jdbcTemplate.query(sql.toString(), new BeanPropertyRowMapper<>(Project.class),
+				whereValues);
+
+		if (resultList.size() == 0) {
+			return null;
+		}
+
+		return resultList.get(0);
+	}
+
+	/**
+	 * <pre>
 	 * [新增]
 	 * 回傳影響資料的數量
 	 * </pre>

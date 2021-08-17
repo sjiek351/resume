@@ -42,17 +42,14 @@ public class Rsfb100ServiceImpl implements Rsfb100Service {
 		
 		Skill skill = new Skill();
 		skill.setSkillName(skillName);
-		
-		boolean isSkillExist = (skillDao.select(skill) != null);
-		
 		skill.setType(type);
 		skill.setRank(rank);
 
 		int result = 0;
-		if (isSkillExist) {
-			result = skillDao.update(skill);
-		} else {
+		if (skillDao.selectByPK(skillName) == null) {
 			result = skillDao.insert(skill);
+		} else {
+			result = skillDao.update(skill);
 		}
 
 		if (result == 0) {

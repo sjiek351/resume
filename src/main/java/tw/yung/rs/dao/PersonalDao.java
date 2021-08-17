@@ -80,7 +80,41 @@ public class PersonalDao extends GenericDao {
 		}
 
 		return resultList;
+	}
 
+	/**
+	 * <pre>
+	 * [查詢] PKey
+	 * 若無資料回傳null
+	 * </pre>
+	 *
+	 * @since 2021-08-17 崔永昀
+	 */
+	public Personal selectByPK(String idn) {
+		if (idn == null) {
+			return null;
+		}
+
+		Map<String, Object> whereMap = new HashMap<>();
+		whereMap.put(" IDN=? ", idn);
+		Map<String, Object> sqlMap = whereMap2Map(whereMap);
+		String whereSql = (String) sqlMap.get(WHERE_SQL);
+		Object[] whereValues = (Object[]) sqlMap.get(WHERE_VALUES);
+
+		StringBuffer sql = new StringBuffer();
+		sql.append(SELECT);
+		sql.append(" NAME, NAME_ENGLISH, JOB, LOCATION, CELLPHONE, EMAIL, INTRODUCTION ");
+		sql.append(FROM).append(PERSONAL);
+		sql.append(whereSql);
+
+		List<Personal> resultList = jdbcTemplate.query(sql.toString(), new BeanPropertyRowMapper<>(Personal.class),
+				whereValues);
+
+		if (resultList.size() == 0) {
+			return null;
+		}
+
+		return resultList.get(0);
 	}
 
 	/**

@@ -77,9 +77,6 @@ public class Rsfa100ServiceImpl implements Rsfa100Service {
 
 		Personal personal = new Personal();
 		personal.setIdn(idn);
-		
-		boolean isPersonalExist = (personalDao.select(personal) != null);
-		
 		personal.setName(name);
 		personal.setNameEnglish(nameEnglish);
 		personal.setJob(job);
@@ -89,12 +86,12 @@ public class Rsfa100ServiceImpl implements Rsfa100Service {
 		personal.setIntroduction(introduction);
 
 		int result = 0;
-		if (isPersonalExist) {
-			result = personalDao.update(personal);
-		} else {
+		if (personalDao.selectByPK(idn) == null) {
 			result = personalDao.insert(personal);
+		} else {
+			result = personalDao.update(personal);
 		}
-		
+
 		if (result == 0) {
 			resp.setMessage(Message.E002, "資料變更");
 		} else {

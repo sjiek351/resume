@@ -43,7 +43,7 @@ public class SkillDao extends GenericDao {
 
 	/**
 	 * <pre>
-	 * [查詢] PKey
+	 * [查詢]
 	 * 若無資料回傳null
 	 * </pre>
 	 *
@@ -76,6 +76,41 @@ public class SkillDao extends GenericDao {
 		}
 
 		return resultList;
+	}
+
+	/**
+	 * <pre>
+	 * [查詢] PKey
+	 * 若無資料回傳null
+	 * </pre>
+	 *
+	 * @since 2021-08-17 崔永昀
+	 */
+	public Skill selectByPK(String skillName) {
+		if (skillName == null) {
+			return null;
+		}
+
+		Map<String, Object> whereMap = new HashMap<>();
+		whereMap.put(" SKILL_NAME=? ", skillName);
+		Map<String, Object> sqlMap = whereMap2Map(whereMap);
+		String whereSql = (String) sqlMap.get(WHERE_SQL);
+		Object[] whereValues = (Object[]) sqlMap.get(WHERE_VALUES);
+
+		StringBuffer sql = new StringBuffer();
+		sql.append(SELECT);
+		sql.append(" * ");
+		sql.append(FROM).append(SKILL);
+		sql.append(whereSql);
+
+		List<Skill> resultList = jdbcTemplate.query(sql.toString(), new BeanPropertyRowMapper<>(Skill.class),
+				whereValues);
+
+		if (resultList.size() == 0) {
+			return null;
+		}
+
+		return resultList.get(0);
 	}
 
 	/**
