@@ -10,7 +10,9 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.lookup.JndiDataSourceLookup;
+import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
@@ -58,5 +60,18 @@ public class WebRootConfig {
 	public JdbcTemplate jdbcTemplate() throws IllegalArgumentException {
 		return new JdbcTemplate(getDataSource());
 	}
+	
+    /**
+     * <pre>
+     * 事務管理器 注入DataSource
+     * </pre>
+     *
+     * @since 2021-08-18 崔永昀
+     */
+    @Bean
+    @Primary
+    public PlatformTransactionManager transactionManager(){
+        return new DataSourceTransactionManager(getDataSource());
+    }
 
 }

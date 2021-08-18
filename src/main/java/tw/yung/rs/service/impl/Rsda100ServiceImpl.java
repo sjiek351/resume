@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import tw.yung.framework.constant.Message;
 import tw.yung.rs.controller.resp.Rsda100Resp;
@@ -29,6 +30,7 @@ public class Rsda100ServiceImpl implements Rsda100Service {
 	private PersonalDao personalDao;
 
 	@Override
+	@Transactional
 	public Rsda100Resp findPersonal(Rsda100Bo rsda100Bo) {
 		Rsda100Resp resp = new Rsda100Resp();
 

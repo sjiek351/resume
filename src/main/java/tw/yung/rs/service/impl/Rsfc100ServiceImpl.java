@@ -7,6 +7,7 @@ import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import tw.yung.framework.constant.Message;
 import tw.yung.rs.controller.resp.Rsfc100Resp;
@@ -41,6 +42,7 @@ public class Rsfc100ServiceImpl implements Rsfc100Service {
 	private TechnologyDao technologyDao;
 
 	@Override
+	@Transactional
 	public Rsfc100Resp modifyExperience(Rsfc100Bo rsfc100Bo) {
 		Rsfc100Resp resp = new Rsfc100Resp();
 
@@ -82,6 +84,7 @@ public class Rsfc100ServiceImpl implements Rsfc100Service {
 	}
 
 	@Override
+	@Transactional
 	public Rsfc100Resp deleteExperience(Rsfc100Bo rsfc100Bo) {
 		Rsfc100Resp resp = new Rsfc100Resp();
 
@@ -108,6 +111,7 @@ public class Rsfc100ServiceImpl implements Rsfc100Service {
 	}
 
 	@Override
+	@Transactional
 	public Rsfc100Resp modifyProject(Rsfc100Bo rsfc100Bo) {
 		Rsfc100Resp resp = new Rsfc100Resp();
 
@@ -166,11 +170,12 @@ public class Rsfc100ServiceImpl implements Rsfc100Service {
 		} else {
 			resp.setMessage(Message.C001, "資料變更");
 		}
-
+		
 		return resp;
 	}
 
 	@Override
+	@Transactional
 	public Rsfc100Resp deleteProject(Rsfc100Bo rsfc100Bo) {
 		Rsfc100Resp resp = new Rsfc100Resp();
 

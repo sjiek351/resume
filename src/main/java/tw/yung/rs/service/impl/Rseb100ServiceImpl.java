@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import tw.yung.framework.constant.Message;
 import tw.yung.rs.controller.resp.Rseb100Resp;
@@ -27,6 +28,7 @@ public class Rseb100ServiceImpl implements Rseb100Service {
 	private SkillDao skillDao;
 
 	@Override
+	@Transactional
 	public Rseb100Resp findSkills() {
 		Rseb100Resp resp = new Rseb100Resp();
 

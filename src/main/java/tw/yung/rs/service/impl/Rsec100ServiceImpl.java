@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import tw.yung.framework.constant.Message;
 import tw.yung.rs.controller.resp.Rsec100Resp;
@@ -40,6 +41,7 @@ public class Rsec100ServiceImpl implements Rsec100Service {
 	private TechnologyDao technologyDao;
 
 	@Override
+	@Transactional
 	public Rsec100Resp findExps() {
 		Rsec100Resp resp = new Rsec100Resp();
 		List<Map<String, Object>> exps = new ArrayList<Map<String, Object>>();

@@ -3,6 +3,7 @@ package tw.yung.rs.service.impl;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import tw.yung.framework.constant.Message;
 import tw.yung.rs.controller.resp.Rsfb100Resp;
@@ -27,6 +28,7 @@ public class Rsfb100ServiceImpl implements Rsfb100Service {
 	private SkillDao skillDao;
 
 	@Override
+	@Transactional
 	public Rsfb100Resp modifySkill(Rsfb100Bo rsfb100Bo) {
 		Rsfb100Resp resp = new Rsfb100Resp();
 
@@ -62,6 +64,7 @@ public class Rsfb100ServiceImpl implements Rsfb100Service {
 	}
 
 	@Override
+	@Transactional
 	public Rsfb100Resp deleteSkill(Rsfb100Bo rsfb100Bo) {
 		Rsfb100Resp resp = new Rsfb100Resp();
 

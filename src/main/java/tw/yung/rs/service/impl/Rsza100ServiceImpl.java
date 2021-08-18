@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import tw.yung.framework.constant.Message;
 import tw.yung.rs.controller.resp.Rsza100Resp;
@@ -27,6 +28,7 @@ public class Rsza100ServiceImpl implements Rsza100Service {
 	private PersonalDao personalDao;
 
 	@Override
+	@Transactional
 	public Rsza100Resp findPersonal() {
 		Rsza100Resp resp = new Rsza100Resp();
 
