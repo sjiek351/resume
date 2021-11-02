@@ -19,6 +19,7 @@ public class Project {
 	private Date endtime;
 	private String jobTitle;
 	private String jobDescribe;
+	private String display;
 
 	// Getter & Setter
 	public String getProjectId() {
@@ -36,7 +37,7 @@ public class Project {
 	public void setProjectName(String projectName) {
 		this.projectName = projectName;
 	}
-	
+
 	public String getExpId() {
 		return expId;
 	}
@@ -77,10 +78,19 @@ public class Project {
 		this.jobDescribe = jobDescribe;
 	}
 
+	public String getDisplay() {
+		return display;
+	}
+
+	public void setDisplay(String display) {
+		this.display = display;
+	}
+
 	@Override
 	public String toString() {
 		return "Project [projectId=" + projectId + ", projectName=" + projectName + ", expId=" + expId + ", starttime="
-				+ starttime + ", endtime=" + endtime + ", jobTitle=" + jobTitle + ", jobDescribe=" + jobDescribe + "]";
+				+ starttime + ", endtime=" + endtime + ", jobTitle=" + jobTitle + ", jobDescribe=" + jobDescribe
+				+ ", display=" + display + "]";
 	}
 
 }

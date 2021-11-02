@@ -60,6 +60,7 @@ public class ProjectDao extends GenericDao {
 			whereMap.put(" ENDTIME=? ", project.getEndtime());
 			whereMap.put(" JOB_TITLE=? ", project.getJobTitle());
 			whereMap.put(" JOB_DESCRIBE=? ", project.getJobDescribe());
+			whereMap.put(" DISPLAY=? ", project.getDisplay());
 		}
 		Map<String, Object> sqlMap = whereMap2Map(whereMap);
 		String whereSql = (String) sqlMap.get(WHERE_SQL);
@@ -131,12 +132,12 @@ public class ProjectDao extends GenericDao {
 
 		StringBuffer sql = new StringBuffer();
 		sql.append(INSERT_INTO).append(PROJECT);
-		sql.append(" (PROJECT_ID, PROJECT_NAME, EXP_ID, STARTTIME, ENDTIME, JOB_TITLE, JOB_DESCRIBE) ");
+		sql.append(" (PROJECT_ID, PROJECT_NAME, EXP_ID, STARTTIME, ENDTIME, JOB_TITLE, JOB_DESCRIBE, DISPLAY) ");
 		sql.append(VALUES);
-		sql.append(" (?, ?, ?, ?, ?, ?, ?) ");
+		sql.append(" (?, ?, ?, ?, ?, ?, ?, ?) ");
 
 		Object[] values = { project.getProjectId(), project.getProjectName(), project.getExpId(),
-				project.getStarttime(), project.getEndtime(), project.getJobTitle(), project.getJobDescribe() };
+				project.getStarttime(), project.getEndtime(), project.getJobTitle(), project.getJobDescribe(), project.getDisplay() };
 
 		int resultList = jdbcTemplate.update(sql.toString(), values);
 
@@ -163,6 +164,7 @@ public class ProjectDao extends GenericDao {
 		updateMap.put(" ENDTIME=? ", project.getEndtime());
 		updateMap.put(" JOB_TITLE=? ", project.getJobTitle());
 		updateMap.put(" JOB_DESCRIBE=? ", project.getJobDescribe());
+		updateMap.put(" DISPLAY=? ", project.getDisplay());
 		Map<String, Object> updateSqlMap = updateMap2Map(updateMap);
 		String updateSql = (String) updateSqlMap.get(UPDATE_SQL);
 		Object[] updateValues = (Object[]) updateSqlMap.get(UPDATE_VALUES);

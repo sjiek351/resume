@@ -122,6 +122,7 @@ public class Rsfc100ServiceImpl implements Rsfc100Service {
 		Date endtime = rsfc100Bo.getEndtime();
 		String jobTitle = rsfc100Bo.getJobTitle();
 		String jobDescribe = rsfc100Bo.getJobDescribe();
+		String display = rsfc100Bo.getDisplay();
 		String[] skillNames = rsfc100Bo.getSkillNames();
 
 		// 檢核
@@ -140,6 +141,7 @@ public class Rsfc100ServiceImpl implements Rsfc100Service {
 		project.setEndtime(endtime);
 		project.setJobTitle(jobTitle);
 		project.setJobDescribe(jobDescribe);
+		project.setDisplay(display);
 
 		int projectResult = 0;
 		if (projectDao.selectByPK(projectId) == null) {

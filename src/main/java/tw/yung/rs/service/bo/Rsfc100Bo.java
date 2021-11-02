@@ -25,6 +25,7 @@ public class Rsfc100Bo {
 	// Project
 	private String projectId;
 	private String projectName;
+	private String display;
 	
 	//Technology
 	private String[] skillNames;
@@ -92,6 +93,14 @@ public class Rsfc100Bo {
 
 	public void setProjectName(String projectName) {
 		this.projectName = projectName;
+	}
+	
+	public String getDisplay() {
+		return display;
+	}
+
+	public void setDisplay(String display) {
+		this.display = display;
 	}
 
 	public String[] getSkillNames() {
