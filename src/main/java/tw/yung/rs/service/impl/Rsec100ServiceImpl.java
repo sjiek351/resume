@@ -95,6 +95,7 @@ public class Rsec100ServiceImpl implements Rsec100Service {
 				project4Resp.put("projectName", projectBean.getProjectName());
 				project4Resp.put("jobTitle", projectBean.getJobTitle());
 				project4Resp.put("jobDescribe", projectBean.getJobDescribe());
+				project4Resp.put("display", projectBean.getDisplay());
 				project4Resp.put("skillNames", skillNames);
 				projects4Resp.add(project4Resp);
 			});
